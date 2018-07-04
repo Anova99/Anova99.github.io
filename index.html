@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products  - W4 Assignment</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products  - W4 Assignment">
+  <meta name="author" content="Rafael Lavagna">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products  - W4 Assignment</h1>
+    <h2>NY Ozone Prediction App Presentation</h2>
+    <p>Rafael Lavagna<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What does this app do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>This app allows you to predict the NY Ozone level using simple linear regression models.</li>
+<li>For this purpose, the user can select one out of three different climate variables as a predictor and enter its value</li>
+<li>The user will get a prediction for the Ozone level as well as a plot of the regression line and
+a table with the linear regression coefficients</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Air Quality Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The airquality dataset includes Daily air quality measurements in New York, from May to September 1973.
+Lets take a look at it.</p>
+
+<pre><code class="r">data(&quot;airquality&quot;)
+head(airquality)
+</code></pre>
+
+<pre><code>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Selecting Inputs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The user will have to select one of the three available variables to predict the Ozone level and enter
+its numeric value:</p>
+
+<ol>
+<li>Temperature</li>
+<li>Solar Radiation</li>
+<li>Wind velocity</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Outputs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The user will get the prediction of the Ozone value, a table with the regression coefficients and a plot
+with the regression line and the predicted value as it is shown in the following example</p>
+
+<pre><code class="r">data(&quot;airquality&quot;); fit &lt;- lm(Ozone~Temp, data = airquality); newdata &lt;- data.frame(Temp = 75)
+plot(airquality$Temp, airquality$Ozone, xlab=&quot;Temp&quot;, ylab=&quot;Ozone&quot;, col=&#39;blue&#39;,main=&#39;Scatter Plot&#39;)
+abline(fit, col = &quot;red&quot;); points(newdata, predict(fit, newdata), col= &quot;green&quot;, pch = 3, cex = 2)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What does this app do?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Air Quality Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Selecting Inputs'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Outputs'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
